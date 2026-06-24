@@ -42,12 +42,9 @@
         document.querySelector("#open").hidden = true;
         return;
       }
-      const shortcut = "shortcuts://run-shortcut?name=" +
-        encodeURIComponent("训练休息并打开下一组") +
-        "&input=text&text=" + encodeURIComponent(next);
       const button = document.querySelector("#open");
       const display = document.querySelector("#time");
-      button.href = shortcut;
+      button.href = next;
       let remaining = Number(seconds);
       const render = () => {
         const minutes = Math.floor(remaining / 60);
@@ -62,7 +59,7 @@
           clearInterval(timer);
           document.querySelector("#title").textContent = "休息结束";
           document.querySelector("#message").textContent = "正在进入下一组…";
-          location.replace(shortcut);
+          location.replace(next);
         }
       }, 1000);
     })();
